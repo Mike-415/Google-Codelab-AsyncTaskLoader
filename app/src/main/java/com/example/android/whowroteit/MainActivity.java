@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         new FetchBook(mTitleText, mAuthorText).execute(queryString);
+        mAuthorText.setText("");
+        mTitleText.setText(R.string.loading);
     }
 
     private class FetchBook extends AsyncTask<String, Void, String> {
