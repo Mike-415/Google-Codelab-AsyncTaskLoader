@@ -1,9 +1,11 @@
 package com.example.android.whowroteit;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -30,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     public void searchBooks(View view) {
         // Get the search string from the input field.
         String queryString = mBookInput.getText().toString();
+        //This hides the keyboard after the user taps this button
+        InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if(inputManager != null){
+            inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+
         new FetchBook(mTitleText, mAuthorText).execute(queryString);
     }
 
