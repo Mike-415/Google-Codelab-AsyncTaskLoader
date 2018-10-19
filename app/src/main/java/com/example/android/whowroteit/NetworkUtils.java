@@ -16,6 +16,8 @@ public class NetworkUtils {
     private static final String BOOK_BASE_URL =  "https://www.googleapis.com/books/v1/volumes?";
     // Parameter for the search string.
     private static final String QUERY_PARAM = "q";
+    // Parameter for the download availability.
+    private static final String DOWNLOAD = "download";
     // Parameter that limits search results.
     private static final String MAX_RESULTS = "maxResults";
     // Parameter to filter by print type.
@@ -29,6 +31,7 @@ public class NetworkUtils {
         {
             Uri builtURI = Uri.parse(BOOK_BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, queryString)
+                    .appendQueryParameter(DOWNLOAD, "epub")
                     .appendQueryParameter(MAX_RESULTS, "10")
                     .appendQueryParameter(PRINT_TYPE, "books")
                     .build();
